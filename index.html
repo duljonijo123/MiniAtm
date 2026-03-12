@@ -1,278 +1,200 @@
-
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AGEN BRILINK — Member App</title>
-    <style>
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agen BRILink FALink</title>
 
-        body,
-        html {
-            height: 100%;
-            width: 100%;
-            overflow: hidden;
-            background: #ffffff;
-            font-family: 'Segoe UI', Inter, sans-serif;
-        }
+<style>
 
-        /* ===== IFRAME ===== */
-        #app-frame {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
+body{
+font-family:Arial, sans-serif;
+margin:0;
+background:#f4f6fb;
+}
 
-        /* ===== OVERLAY ===== */
-        #overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, #060b24, #1a0308, #0c1a3d);
-            z-index: 50;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 20px;
-            transition: opacity 0.7s ease;
-        }
+header{
+background:#0057b8;
+color:white;
+padding:15px;
+text-align:center;
+}
 
-        #overlay.fade-out {
-            opacity: 0;
-            pointer-events: none;
-        }
+.hero{
+background:linear-gradient(120deg,#0057b8,#0099ff);
+color:white;
+padding:70px 20px;
+text-align:center;
+}
 
-        .ov-logo {
-            font-size: 3rem;
-            line-height: 1;
-        }
+.hero h1{
+font-size:38px;
+margin-bottom:10px;
+}
 
-        .ov-title {
-            font-size: 1.1rem;
-            font-weight: 800;
-            color: #ffffff;
-            text-align: center;
-            letter-spacing: 0.02em;
-        }
+.btn{
+background:#25D366;
+padding:14px 28px;
+color:white;
+text-decoration:none;
+border-radius:8px;
+font-weight:bold;
+}
 
-        .ov-sub {
-            font-size: 0.75rem;
-            color: rgba(255, 255, 255, 0.5);
-            text-align: center;
-        }
+.section{
+padding:40px 20px;
+max-width:1100px;
+margin:auto;
+}
 
-        /* ===== PROGRESS BAR ===== */
-        .progress-wrap {
-            width: 200px;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.12);
-            border-radius: 999px;
-            overflow: hidden;
-        }
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+}
 
-        .progress-bar {
-            height: 100%;
-            width: 0%;
-            border-radius: 999px;
-            background: linear-gradient(90deg, #4f46e5, #6366f1);
-            transition: width 0.4s ease;
-        }
+.card{
+background:white;
+padding:20px;
+border-radius:12px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+text-align:center;
+}
 
-        .ov-status {
-            font-size: 0.78rem;
-            color: rgba(255, 255, 255, 0.55);
-            text-align: center;
-            min-height: 18px;
-        }
+.card h3{
+color:#0057b8;
+}
 
-        /* ===== ERROR STATE ===== */
-        #error-box {
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            gap: 14px;
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 16px;
-            padding: 24px 28px;
-            text-align: center;
-            max-width: 300px;
-        }
+.testimoni{
+background:white;
+padding:20px;
+border-left:5px solid #0057b8;
+margin-bottom:15px;
+border-radius:8px;
+}
 
-        .err-icon {
-            font-size: 2.2rem;
-        }
+footer{
+background:#0057b8;
+color:white;
+text-align:center;
+padding:20px;
+}
 
-        .err-title {
-            font-size: 0.95rem;
-            font-weight: 700;
-            color: #fca5a5;
-        }
+</style>
 
-        .err-msg {
-            font-size: 0.75rem;
-            color: rgba(255, 255, 255, 0.45);
-            line-height: 1.5;
-        }
-
-        .btn-row {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .btn-retry,
-        .btn-open {
-            padding: 9px 20px;
-            border-radius: 10px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            cursor: pointer;
-            border: none;
-            transition: opacity 0.2s;
-        }
-
-        .btn-retry:hover,
-        .btn-open:hover {
-            opacity: 0.85;
-        }
-
-        .btn-retry {
-            background: linear-gradient(135deg, #4f46e5, #3730a3);
-            color: white;
-        }
-
-        .btn-open {
-            background: rgba(255, 255, 255, 0.12);
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.25);
-        }
-    </style>
 </head>
 
 <body>
 
-    <!-- Overlay Loading -->
-    <div id="overlay">
-        <div class="ov-logo">📱</div>
-        <div>
-            <div class="ov-title">AGEN BRILINK</div>
-            <div class="ov-sub">Transfer Bank · Tarik Tunai · Multi Pembayaran — Member App</div>
-            <div class="ov-sub" style="font-size:0.68rem;margin-top:2px">Aksesoris · Voucher Internet · ATK · Cetak Foto · Print Dokumen · Peralatan Listrik · Pengiriman Paket</div>
-        </div>
-        <div class="progress-wrap">
-            <div class="progress-bar" id="prog"></div>
-        </div>
-        <div class="ov-status" id="status-text">Menyiapkan aplikasi...</div>
+<header>
+<h2>BRILink FALink</h2>
+<p>Transaksi Mudah Tanpa Harus ke Bank</p>
+</header>
 
-        <!-- Error box (tersembunyi, muncul jika timeout 18 detik) -->
-        <div id="error-box">
-            <div class="err-icon">⚠️</div>
-            <div class="err-title">Gagal memuat aplikasi</div>
-            <div class="err-msg">Server lambat atau koneksi bermasalah.<br>Coba lagi atau buka langsung di tab baru.
-            </div>
-            <div class="btn-row">
-                <button class="btn-retry" onclick="retryLoad()">🔄 Coba Lagi</button>
-                <button class="btn-open" onclick="openDirect()">↗ Buka Langsung</button>
-            </div>
-        </div>
-    </div>
+<div class="hero">
+<h1>Agen BRILink Terdekat</h1>
+<p>Tarik Tunai • Transfer • Pulsa • Pembayaran</p>
+<br>
+<a class="btn" href="https://wa.me/6285269452753">Chat WhatsApp</a>
+</div>
 
-    <!-- Iframe GAS -->
-    <iframe id="app-frame"
-        src="https://script.google.com/macros/s/AKfycbynzMcKK1aCUG_UuANr-iwySnuWkhR4gjgOMjGqoowPKTs26vkGZufBLaFIrnZdZhYWig/exec"
-        allow="geolocation; microphone; camera; clipboard-read; clipboard-write; encrypted-media;"></iframe>
+<section class="section">
 
-    <script>
-        const GAS_URL = "https://script.google.com/macros/s/AKfycbynzMcKK1aCUG_UuANr-iwySnuWkhR4gjgOMjGqoowPKTs26vkGZufBLaFIrnZdZhYWig/exec";
+<h2 style="text-align:center">Layanan Kami</h2>
 
-        const iframe = document.getElementById('app-frame');
-        const overlay = document.getElementById('overlay');
-        const prog = document.getElementById('prog');
-        const statusTxt = document.getElementById('status-text');
-        const errorBox = document.getElementById('error-box');
+<div class="grid">
 
-        let loaded = false;
-        let progVal = 0;
-        let progTimer, errorTimer;
+<div class="card">
+<h3>Tarik Tunai</h3>
+<p>Ambil uang tanpa perlu ke ATM.</p>
+</div>
 
-        // Simulasi progress bar — melambat di 92%, tunggu onload
-        function startProgress() {
-            progVal = 0;
-            clearInterval(progTimer);
-            progTimer = setInterval(() => {
-                if (loaded) { clearInterval(progTimer); return; }
-                const inc = progVal < 40 ? 3 : progVal < 70 ? 1.5 : progVal < 92 ? 0.4 : 0;
-                progVal = Math.min(progVal + inc, 92);
-                prog.style.width = progVal + '%';
-            }, 200);
-        }
+<div class="card">
+<h3>Transfer Bank</h3>
+<p>Kirim uang ke semua bank.</p>
+</div>
 
-        // Update teks status berdasarkan progres
-        function updateStatusMsg() {
-            if (loaded) return;
-            if (progVal < 30) statusTxt.textContent = 'Menyiapkan aplikasi...';
-            else if (progVal < 60) statusTxt.textContent = 'Menghubungi server...';
-            else if (progVal < 85) statusTxt.textContent = 'Memuat data...';
-            else statusTxt.textContent = 'Hampir siap...';
-        }
-        setInterval(updateStatusMsg, 800);
+<div class="card">
+<h3>Pulsa & Paket Data</h3>
+<p>Isi pulsa semua operator.</p>
+</div>
 
-        // Sembunyikan overlay setelah iframe loaded
-        function hideOverlay() {
-            loaded = true;
-            clearInterval(progTimer);
-            clearTimeout(errorTimer);
-            prog.style.width = '100%';
-            statusTxt.textContent = 'Siap!';
-            setTimeout(() => {
-                overlay.classList.add('fade-out');
-                setTimeout(() => { overlay.style.display = 'none'; }, 700);
-            }, 400);
-        }
+<div class="card">
+<h3>Pembayaran</h3>
+<p>Bayar listrik, BPJS, dan lainnya.</p>
+</div>
 
-        // Tampilkan error jika timeout 18 detik
-        function showError() {
-            if (loaded) return;
-            clearInterval(progTimer);
-            statusTxt.style.display = 'none';
-            prog.parentElement.style.display = 'none';
-            errorBox.style.display = 'flex';
-        }
+</div>
 
-        // Tombol Coba Lagi — reload iframe dengan cache buster
-        function retryLoad() {
-            errorBox.style.display = 'none';
-            statusTxt.style.display = 'block';
-            prog.parentElement.style.display = 'block';
-            statusTxt.textContent = 'Mencoba kembali...';
-            loaded = false;
-            iframe.src = GAS_URL + '?_t=' + Date.now();
-            startProgress();
-            errorTimer = setTimeout(showError, 18000);
-        }
+</section>
 
-        // Tombol Buka Langsung di tab baru
-        function openDirect() {
-            window.open(GAS_URL, '_blank');
-        }
 
-        // Init
-        iframe.onload = hideOverlay;
-        errorTimer = setTimeout(showError, 18000);
-        startProgress();
-    </script>
+<section class="section">
+
+<h2 style="text-align:center">Kenapa Pilih Kami?</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>Cepat</h3>
+<p>Transaksi hanya beberapa menit.</p>
+</div>
+
+<div class="card">
+<h3>Aman</h3>
+<p>Layanan resmi Bank BRI.</p>
+</div>
+
+<div class="card">
+<h3>Dekat</h3>
+<p>Lokasi mudah dijangkau warga.</p>
+</div>
+
+</div>
+
+</section>
+
+
+<section class="section">
+
+<h2 style="text-align:center">Testimoni Pelanggan</h2>
+
+<div class="testimoni">
+"Tarik tunai disini cepat banget, tidak perlu ke ATM lagi."
+</div>
+
+<div class="testimoni">
+"Pelayanannya ramah, transfer juga mudah."
+</div>
+
+</section>
+
+
+<section class="section">
+
+<h2 style="text-align:center">Lokasi Kami</h2>
+
+<div style="text-align:center">
+
+<iframe 
+src="https://maps.google.com/maps?q=Sendang%20Asih&t=&z=13&ie=UTF8&iwloc=&output=embed"
+width="100%" 
+height="300" 
+style="border:0;border-radius:10px;">
+</iframe>
+
+<p><b>Agen BRILink FALink</b></p>
+<p>Dusun 5 Sendang Asih</p>
+<p>WA: 0852-6945-2753</p>
+
+</div>
+
+</section>
+
+
+<footer>
+<p>© 2026 Agen BRILink FALink</p>
+</footer>
+
 </body>
-
 </html>
