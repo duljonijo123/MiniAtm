@@ -3,198 +3,169 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Agen BRILink FALink</title>
+<title>BRILink FALink</title>
 
 <style>
 
 body{
-font-family:Arial, sans-serif;
 margin:0;
-background:#f4f6fb;
+font-family:Arial, sans-serif;
+background:#eef2f7;
 }
 
-header{
-background:#0057b8;
-color:white;
-padding:15px;
-text-align:center;
-}
-
-.hero{
+.header{
 background:linear-gradient(120deg,#0057b8,#0099ff);
 color:white;
-padding:70px 20px;
+padding:25px;
 text-align:center;
 }
 
-.hero h1{
-font-size:38px;
-margin-bottom:10px;
+.header h1{
+margin:0;
 }
 
-.btn{
-background:#25D366;
-padding:14px 28px;
-color:white;
-text-decoration:none;
-border-radius:8px;
-font-weight:bold;
-}
-
-.section{
-padding:40px 20px;
+.container{
+padding:20px;
 max-width:1100px;
 margin:auto;
 }
 
-.grid{
+.menu{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:20px;
+grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+gap:15px;
+margin-top:20px;
 }
 
 .card{
 background:white;
 padding:20px;
-border-radius:12px;
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
+border-radius:15px;
 text-align:center;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+transition:0.3s;
 }
 
-.card h3{
-color:#0057b8;
+.card:hover{
+transform:scale(1.05);
 }
 
-.testimoni{
-background:white;
+.icon{
+font-size:35px;
+margin-bottom:10px;
+}
+
+.promo{
+background:#fff7e6;
 padding:20px;
-border-left:5px solid #0057b8;
-margin-bottom:15px;
-border-radius:8px;
+border-radius:10px;
+margin-top:30px;
+border-left:5px solid orange;
 }
 
-footer{
+.maps{
+margin-top:30px;
+}
+
+.whatsapp{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+color:white;
+padding:15px 20px;
+border-radius:50px;
+text-decoration:none;
+font-weight:bold;
+box-shadow:0 4px 10px rgba(0,0,0,0.3);
+}
+
+.footer{
+margin-top:40px;
+text-align:center;
+padding:20px;
 background:#0057b8;
 color:white;
-text-align:center;
-padding:20px;
 }
 
 </style>
-
 </head>
 
 <body>
 
-<header>
-<h2>BRILink FALink</h2>
+<div class="header">
+<h1>BRILink FALink</h1>
 <p>Transaksi Mudah Tanpa Harus ke Bank</p>
-</header>
-
-<div class="hero">
-<h1>Agen BRILink Terdekat</h1>
-<p>Tarik Tunai • Transfer • Pulsa • Pembayaran</p>
-<br>
-<a class="btn" href="https://wa.me/6285269452753">Chat WhatsApp</a>
 </div>
 
-<section class="section">
+<div class="container">
 
-<h2 style="text-align:center">Layanan Kami</h2>
+<h2>Layanan</h2>
 
-<div class="grid">
+<div class="menu">
 
 <div class="card">
-<h3>Tarik Tunai</h3>
-<p>Ambil uang tanpa perlu ke ATM.</p>
+<div class="icon">💰</div>
+Tarik Tunai
 </div>
 
 <div class="card">
-<h3>Transfer Bank</h3>
-<p>Kirim uang ke semua bank.</p>
+<div class="icon">🔁</div>
+Transfer
 </div>
 
 <div class="card">
-<h3>Pulsa & Paket Data</h3>
-<p>Isi pulsa semua operator.</p>
+<div class="icon">📱</div>
+Pulsa
 </div>
 
 <div class="card">
-<h3>Pembayaran</h3>
-<p>Bayar listrik, BPJS, dan lainnya.</p>
-</div>
-
-</div>
-
-</section>
-
-
-<section class="section">
-
-<h2 style="text-align:center">Kenapa Pilih Kami?</h2>
-
-<div class="grid">
-
-<div class="card">
-<h3>Cepat</h3>
-<p>Transaksi hanya beberapa menit.</p>
+<div class="icon">📶</div>
+Paket Data
 </div>
 
 <div class="card">
-<h3>Aman</h3>
-<p>Layanan resmi Bank BRI.</p>
+<div class="icon">💡</div>
+Listrik
 </div>
 
 <div class="card">
-<h3>Dekat</h3>
-<p>Lokasi mudah dijangkau warga.</p>
+<div class="icon">🏥</div>
+BPJS
 </div>
 
 </div>
 
-</section>
-
-
-<section class="section">
-
-<h2 style="text-align:center">Testimoni Pelanggan</h2>
-
-<div class="testimoni">
-"Tarik tunai disini cepat banget, tidak perlu ke ATM lagi."
+<div class="promo">
+<h3>Promo Hari Ini</h3>
+<p>Tarik Tunai Cepat • Pelayanan Ramah • Transaksi Aman</p>
 </div>
 
-<div class="testimoni">
-"Pelayanannya ramah, transfer juga mudah."
-</div>
+<div class="maps">
 
-</section>
-
-
-<section class="section">
-
-<h2 style="text-align:center">Lokasi Kami</h2>
-
-<div style="text-align:center">
+<h2>Lokasi Kami</h2>
 
 <iframe 
 src="https://maps.google.com/maps?q=Sendang%20Asih&t=&z=13&ie=UTF8&iwloc=&output=embed"
 width="100%" 
-height="300" 
+height="300"
 style="border:0;border-radius:10px;">
 </iframe>
 
 <p><b>Agen BRILink FALink</b></p>
 <p>Dusun 5 Sendang Asih</p>
-<p>WA: 0852-6945-2753</p>
 
 </div>
 
-</section>
+</div>
 
+<a class="whatsapp" href="https://wa.me/6285269452753">
+Chat WA
+</a>
 
-<footer>
-<p>© 2026 Agen BRILink FALink</p>
-</footer>
+<div class="footer">
+© 2026 BRILink FALink
+</div>
 
 </body>
 </html>
