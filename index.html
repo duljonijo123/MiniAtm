@@ -3,45 +3,72 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>BRILink FALink</title>
 
 <style>
 
 body{
-font-family:Arial;
 margin:0;
-background:#f4f6fb;
+font-family:Arial, sans-serif;
+background:#eef2f7;
 }
 
-.header{
+.top{
 background:linear-gradient(120deg,#0057b8,#0099ff);
 color:white;
-padding:30px;
+padding:25px;
+border-bottom-left-radius:20px;
+border-bottom-right-radius:20px;
+}
+
+.top h2{
+margin:0;
+}
+
+.balance{
+background:white;
+margin:20px;
+padding:20px;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
 text-align:center;
 }
 
-.container{
-max-width:900px;
-margin:auto;
+.menu{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:15px;
 padding:20px;
 }
 
-.card{
+.item{
 background:white;
-padding:20px;
-border-radius:12px;
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
-margin-bottom:20px;
+padding:15px;
+border-radius:15px;
+text-align:center;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+font-size:14px;
 }
 
-button{
-background:#0057b8;
-color:white;
-border:none;
-padding:10px 20px;
-border-radius:6px;
-cursor:pointer;
+.icon{
+font-size:30px;
+margin-bottom:8px;
+}
+
+.promo{
+background:white;
+margin:20px;
+padding:20px;
+border-radius:15px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+.testimoni{
+background:white;
+margin:20px;
+padding:15px;
+border-left:5px solid #0057b8;
+border-radius:10px;
 }
 
 .whatsapp{
@@ -50,104 +77,98 @@ bottom:20px;
 right:20px;
 background:#25D366;
 color:white;
-padding:15px 20px;
+padding:15px 18px;
 border-radius:50px;
 text-decoration:none;
 font-weight:bold;
+box-shadow:0 4px 10px rgba(0,0,0,0.3);
+}
+
+.footer{
+text-align:center;
+padding:20px;
+color:#777;
 }
 
 </style>
-
-<script>
-
-function hitungBiaya(){
-
-let layanan=document.getElementById("layanan").value
-let biaya=0
-
-if(layanan=="tarik"){
-biaya=5000
-}
-
-if(layanan=="transfer"){
-biaya=7000
-}
-
-if(layanan=="pulsa"){
-biaya=2000
-}
-
-document.getElementById("hasil").innerHTML="Biaya Admin: Rp "+biaya
-
-}
-
-let nomor=0
-
-function ambilAntrian(){
-nomor++
-document.getElementById("antrian").innerHTML="Nomor Antrian Anda: "+nomor
-}
-
-</script>
-
 </head>
 
 <body>
 
-<div class="header">
-<h1>BRILink FALink</h1>
+<div class="top">
+<h2>BRILink FALink</h2>
 <p>Transaksi Mudah Dekat Rumah</p>
 </div>
 
-<div class="container">
+<div class="balance">
+<h3>Agen BRILink</h3>
+<p>Dusun 5 Sendang Asih</p>
+</div>
 
-<div class="card">
+<div class="menu">
 
-<h2>Kalkulator Biaya Admin</h2>
+<div class="item">
+<div class="icon">💰</div>
+Tarik Tunai
+</div>
 
-<select id="layanan">
+<div class="item">
+<div class="icon">🔁</div>
+Transfer
+</div>
 
-<option value="tarik">Tarik Tunai</option>
-<option value="transfer">Transfer</option>
-<option value="pulsa">Pulsa</option>
+<div class="item">
+<div class="icon">📱</div>
+Pulsa
+</div>
 
-</select>
+<div class="item">
+<div class="icon">📶</div>
+Paket Data
+</div>
 
-<button onclick="hitungBiaya()">Cek Biaya</button>
+<div class="item">
+<div class="icon">💡</div>
+Listrik
+</div>
 
-<p id="hasil"></p>
+<div class="item">
+<div class="icon">🏥</div>
+BPJS
+</div>
+
+<div class="item">
+<div class="icon">💳</div>
+Top Up
+</div>
+
+<div class="item">
+<div class="icon">📍</div>
+Lokasi
+</div>
 
 </div>
 
-
-<div class="card">
-
-<h2>Ambil Nomor Antrian</h2>
-
-<button onclick="ambilAntrian()">Ambil Antrian</button>
-
-<p id="antrian"></p>
-
+<div class="promo">
+<h3>🔥 Promo Hari Ini</h3>
+<p>Tarik Tunai Cepat • Pelayanan Ramah • Tanpa Antri</p>
 </div>
 
-
-<div class="card">
-
-<h2>Layanan</h2>
-
-<p>💰 Tarik Tunai</p>
-<p>🔁 Transfer Bank</p>
-<p>📱 Pulsa</p>
-<p>📶 Paket Data</p>
-<p>💡 Listrik</p>
-
+<div class="testimoni">
+"Paling enak tarik tunai di sini, dekat dan cepat."
 </div>
 
+<div class="testimoni">
+"Transfer gampang, tidak perlu ke ATM lagi."
 </div>
 
 <a class="whatsapp" href="https://wa.me/6285269452753">
 Chat WA
 </a>
+
+<div class="footer">
+© 2026 BRILink FALink
+</div>
 
 </body>
 </html>
