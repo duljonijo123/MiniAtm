@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>BRILink FALink - Tarik Tunai & Transfer</title>
+<title>BRILink FALink</title>
 
 <style>
 
@@ -17,63 +17,31 @@ background:#f4f6fb;
 .header{
 background:linear-gradient(120deg,#0057b8,#0099ff);
 color:white;
-padding:35px;
+padding:30px;
 text-align:center;
 }
 
 .container{
-max-width:1000px;
+max-width:900px;
 margin:auto;
 padding:20px;
-}
-
-.promo{
-background:#fff3cd;
-padding:20px;
-border-radius:10px;
-text-align:center;
-margin-bottom:20px;
-font-size:18px;
-}
-
-.menu{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-gap:20px;
 }
 
 .card{
 background:white;
 padding:20px;
 border-radius:12px;
-text-align:center;
 box-shadow:0 5px 15px rgba(0,0,0,0.1);
+margin-bottom:20px;
 }
 
-.testimoni{
-background:white;
-padding:15px;
-border-left:5px solid #0057b8;
-margin-top:15px;
-border-radius:8px;
-}
-
-.btn{
-display:inline-block;
+button{
 background:#0057b8;
 color:white;
-padding:12px 20px;
-border-radius:8px;
-text-decoration:none;
-margin-top:15px;
-}
-
-.share{
-background:#e8f4ff;
-padding:20px;
-margin-top:30px;
-border-radius:10px;
-text-align:center;
+border:none;
+padding:10px 20px;
+border-radius:6px;
+cursor:pointer;
 }
 
 .whatsapp{
@@ -88,15 +56,39 @@ text-decoration:none;
 font-weight:bold;
 }
 
-.footer{
-background:#0057b8;
-color:white;
-text-align:center;
-padding:20px;
-margin-top:40px;
+</style>
+
+<script>
+
+function hitungBiaya(){
+
+let layanan=document.getElementById("layanan").value
+let biaya=0
+
+if(layanan=="tarik"){
+biaya=5000
 }
 
-</style>
+if(layanan=="transfer"){
+biaya=7000
+}
+
+if(layanan=="pulsa"){
+biaya=2000
+}
+
+document.getElementById("hasil").innerHTML="Biaya Admin: Rp "+biaya
+
+}
+
+let nomor=0
+
+function ambilAntrian(){
+nomor++
+document.getElementById("antrian").innerHTML="Nomor Antrian Anda: "+nomor
+}
+
+</script>
 
 </head>
 
@@ -109,47 +101,45 @@ margin-top:40px;
 
 <div class="container">
 
-<div class="promo">
-🔥 Promo Hari Ini 🔥  
-Tarik Tunai Cepat • Pelayanan Ramah • Tanpa Antri
+<div class="card">
+
+<h2>Kalkulator Biaya Admin</h2>
+
+<select id="layanan">
+
+<option value="tarik">Tarik Tunai</option>
+<option value="transfer">Transfer</option>
+<option value="pulsa">Pulsa</option>
+
+</select>
+
+<button onclick="hitungBiaya()">Cek Biaya</button>
+
+<p id="hasil"></p>
+
 </div>
+
+
+<div class="card">
+
+<h2>Ambil Nomor Antrian</h2>
+
+<button onclick="ambilAntrian()">Ambil Antrian</button>
+
+<p id="antrian"></p>
+
+</div>
+
+
+<div class="card">
 
 <h2>Layanan</h2>
 
-<div class="menu">
-
-<div class="card">💰 Tarik Tunai</div>
-<div class="card">🔁 Transfer Bank</div>
-<div class="card">📱 Pulsa</div>
-<div class="card">📶 Paket Data</div>
-<div class="card">💡 Bayar Listrik</div>
-<div class="card">🏥 BPJS</div>
-
-</div>
-
-<h2>Testimoni Pelanggan</h2>
-
-<div class="testimoni">
-"Tarik tunai disini cepat banget, tidak perlu ke ATM."
-</div>
-
-<div class="testimoni">
-"Pelayanannya ramah, transfer juga gampang."
-</div>
-
-<div class="testimoni">
-"Lokasinya dekat, jadi tidak perlu ke kota."
-</div>
-
-<div class="share">
-
-<h3>Bagikan ke Teman</h3>
-
-<p>Bantu share supaya warga tahu ada BRILink dekat sini.</p>
-
-<a class="btn" href="https://wa.me/?text=Cek%20Agen%20BRILink%20FALink%20di%20Dusun%205%20Sendang%20Asih">
-Share ke WhatsApp
-</a>
+<p>💰 Tarik Tunai</p>
+<p>🔁 Transfer Bank</p>
+<p>📱 Pulsa</p>
+<p>📶 Paket Data</p>
+<p>💡 Listrik</p>
 
 </div>
 
@@ -158,10 +148,6 @@ Share ke WhatsApp
 <a class="whatsapp" href="https://wa.me/6285269452753">
 Chat WA
 </a>
-
-<div class="footer">
-© 2026 BRILink FALink
-</div>
 
 </body>
 </html>
